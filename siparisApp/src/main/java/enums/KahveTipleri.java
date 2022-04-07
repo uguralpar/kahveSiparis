@@ -1,5 +1,7 @@
 package enums;
 
+import exceptions.KahveSiparisException;
+
 public enum KahveTipleri {
 
 	ESPRESSO(1,"Espresso (7 tl)") {
@@ -62,13 +64,13 @@ public enum KahveTipleri {
 		this.desc = desc;
 	}
 	
-	public static KahveTipleri getKahveTipiFromIndex(int index) {
+	public static KahveTipleri getKahveTipiFromIndex(int index) throws KahveSiparisException {
 		for(KahveTipleri kahveTipi: KahveTipleri.values()) {
 			if(kahveTipi.getIndex() == index) {
 				return kahveTipi;
 			}
 		}
-		return KahveTipleri.HOT_WATER;
+		throw new KahveSiparisException("İstediğiniz kahve türü menüde yoktur.");
 	}
 
 	public int getIndex() {

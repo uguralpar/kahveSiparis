@@ -3,6 +3,7 @@ package kahvesiparis;
 import java.util.Scanner;
 
 import enums.KahveTipleri;
+import exceptions.KahveSiparisException;
 
 public class KahveSiparis {
 
@@ -16,12 +17,13 @@ public class KahveSiparis {
 			System.out.println("Lütfen seçmek istediğiniz kahvenin numarasını giriniz");
 
 			Integer siparisNo = siparisScanner.nextInt();
-			System.out.println("Teşekkürler kahveniz hazırlanıyor");
 			
 			KahveTipleri tip = KahveTipleri.getKahveTipiFromIndex(siparisNo);
+			System.out.println("Teşekkürler kahveniz hazırlanıyor");
+			
 			tip.execute();
 		} catch (Exception e) {
-
+			System.out.println("Siparişiniz alınırken hata oluştu. "+ e.toString());
 		}
 	}
 
